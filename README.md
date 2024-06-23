@@ -61,8 +61,6 @@ jupyter notebook
 
 ![leaderboard.png](leaderboard.png)
 
-The score of the `v3` model is `89%`.
-
 ![accuracy.png](accuracy.png)
 
 ![confusion.png](confusion.png)
