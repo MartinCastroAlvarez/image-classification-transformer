@@ -28,7 +28,7 @@ class ApparelDataset(Dataset):
 
     def _get_id_by_position(self, position: int) -> int:
         assert position < len(self)
-        return self.df.iloc[position, 0]
+        return self.df.iloc[position, self.df.columns.get_loc('id')]
 
     def _get_image_name_by_position(self, position: int) -> str:
         return f"{self._get_id_by_position(position)}.png"
@@ -43,11 +43,15 @@ class ApparelDataset(Dataset):
         image = Image.open(image_path).convert("RGB")
         return self.preprocessing(image)
 
-    def _get_label_by_position(self, idx: int) -> int:
-        return self.df.iloc[idx, 1]
+    def _get_label_by_position(self, position: int) -> int:
+        return self.df.iloc[position, self.df.columns.get_loc('label')] if 'label' in self.df.columns else None
 
     def __getitem__(self, position: int):
-        return self._get_image_by_position(position), self._get_label_by_position(position)
+        image = self._get_image_by_position(position)
+        label = self._get_label_by_position(position)
+        if label is None:
+            return image
+        return image, label
 
 
 class ApparelStackedDataset(Dataset):

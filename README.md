@@ -26,7 +26,7 @@
 
 ## Solution
 
-* TODO FIXME
+We use a Vision Transformer (ViT) model as a starting point and train a small fully connected network on top of it to classify clothing images. The images from the dataset are preprocessed and augmented with random transformations. This, along with dropout layers, helps the model learn the information in the images effectively. At the end, we evaluate the model's accuracy and confusion matrix to understand its performance. We also create multiple versions of the same model, each aiming to improve on the previous results without replacing them.
 
 ## Instructions
 
