@@ -54,7 +54,7 @@ jupyter notebook
 |---|---|
 |[v1](./training_v1.ipynb)|This serves as a proof of concepts of the Python code. It trains only up to `3` batches per epoch, so that we can validate in very short time that there are no errors.|
 |[v2](./training_v2.ipynb)|This runs the same training pipeline but with a significant larger number of batches, with the goal of proving that the model is learning. The previous version outputs an accuracy of approximately `50%` after `10` epochs. However, after the very first epoch, this new version has an accuracy of approximately `70%`. The test accuracy is approximately `78%`.|
-|[v3](./training_v3.ipynb)|This runs the model without skipping any batch. After the success of the previous 2 versions, this is the first attempt to build a final product with actual value.|
+|[v3](./training_v3.ipynb)|This runs the model without skipping any batch. After the success of the previous 2 versions, this is the first attempt to build a final product with actual value. AFter the first epoch, this version has an accuracy of approximatey `84%` which is significantly better than the accuracy of the previous model after `10` epochs. The model accuracy increased to `87%`.|
 
 ## Results
 
