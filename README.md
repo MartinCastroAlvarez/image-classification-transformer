@@ -61,6 +61,8 @@ jupyter notebook
 
 ## Results
 
+The best model so far is the [v4](./v4.ipynb).
+
 ![accuracy.png](accuracy.png)
 
 ![confusion.png](confusion.png)
