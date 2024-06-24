@@ -15,12 +15,25 @@ class ApparelDataset(Dataset):
         self.preprocessing = preprocessing
 
     @classmethod
-    def load(cls, csv_path: str, images_path: str, preprocessing: transforms.Compose, sample: float = 1) -> "ApparelDataset":
+    def load(
+        cls,
+        csv_path: str,
+        images_path: str,
+        preprocessing: transforms.Compose,
+        sample: float = 1,
+        labels: List[int] = None
+    ) -> "ApparelDataset":
         assert os.path.isfile(csv_path)
         assert sample >= 0 and sample <= 1
         df = pd.read_csv(csv_path)
-        sample_size = int(len(df) * sample)
-        df = df.sample(n=sample_size).reset_index(drop=True)
+
+        if sample < 1:
+            sample_size = int(len(df) * sample)
+            df = df.sample(n=sample_size).reset_index(drop=True)
+
+        if labels is not None:
+            df = df[df['label'].isin(labels)]
+
         return cls(df, images_path, preprocessing)
 
     def __len__(self) -> int:
